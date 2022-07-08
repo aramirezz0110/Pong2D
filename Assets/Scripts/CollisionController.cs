@@ -5,7 +5,7 @@ using UnityEngine;
 public class CollisionController : MonoBehaviour
 {
     private BallMovementController ballMovementController;
-    private RaquetController? raquetController;
+    private RaquetController raquetController;
     private Vector3 ballPosition;
     private Vector3 raquetPosition;
     private float raquetHeight;
@@ -43,10 +43,12 @@ public class CollisionController : MonoBehaviour
         else if(collision.gameObject.tag == GameTags.LeftWall)
         {
             print("Left wall hit");
+            ScoreController.Instance.SetPointToPlayer(PlayerType.Player2);
         }
         else if(collision.gameObject.tag == GameTags.RightWall)
         {
             print("Right wall hit");
+            ScoreController.Instance.SetPointToPlayer(PlayerType.Player1);
         }
     }
 }
