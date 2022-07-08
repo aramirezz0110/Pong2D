@@ -9,10 +9,15 @@ public class SceneSwitcher : MonoBehaviour
     {
         Instance = this;
     }
-    public void LoadGameScene()
+    public void LoadGameScenePvP()
     {
-        SceneManager.LoadScene(SceneNames.GameScene);
+        SceneManager.LoadScene(SceneNames.GameScenePvP);
     }
+    public void LoadGameScenePvM()
+    {
+        SceneManager.LoadScene(SceneNames.GameScenePvM);
+    }
+
     public void LoadMainMenuScene()
     {
         SceneManager.LoadScene(SceneNames.MainMenu);

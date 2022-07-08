@@ -6,6 +6,7 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public GameMode gameMode;
 
     public GameObject playersInfoPanel;
     public GameObject gameFinishedPanel;
@@ -31,7 +32,14 @@ public class GameManager : MonoBehaviour
     private void ReloadCurrentScene()
     {
         Time.timeScale = 1;
-        SceneSwitcher.Instance.LoadGameScene();
+        if(gameMode == GameMode.PvP)
+        {
+            SceneSwitcher.Instance.LoadGameScenePvP();
+        }
+        if(gameMode == GameMode.PvM)
+        {
+            SceneSwitcher.Instance.LoadGameScenePvM();
+        }
     }
     private void BackToMainMenu()
     {

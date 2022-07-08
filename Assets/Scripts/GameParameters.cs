@@ -5,7 +5,8 @@ using UnityEngine;
 public static class SceneNames 
 {
     public static string MainMenu = "MainMenu";
-    public static string GameScene = "GameScene";
+    public static string GameScenePvP = "GameScenePvP";
+    public static string GameScenePvM = "GameScenePvM";
 }
 public static class GameTags 
 {
@@ -23,6 +24,10 @@ public enum PlayerType
     Player1,
     Player2
 }
-
+public enum GameMode
+{
+    PvP,
+    PvM
+}
 
 
