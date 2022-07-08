@@ -41,14 +41,14 @@ public class CollisionController : MonoBehaviour
             RicochetWithRaquet(collision);
         }
         else if(collision.gameObject.tag == GameTags.LeftWall)
-        {
-            print("Left wall hit");
+        {            
             ScoreController.Instance.SetPointToPlayer(PlayerType.Player2);
+            StartCoroutine(ballMovementController.StartBall(PlayerType.Player1));
         }
         else if(collision.gameObject.tag == GameTags.RightWall)
-        {
-            print("Right wall hit");
+        {            
             ScoreController.Instance.SetPointToPlayer(PlayerType.Player1);
+            StartCoroutine(ballMovementController.StartBall(PlayerType.Player2));
         }
     }
 }

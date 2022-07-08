@@ -15,15 +15,17 @@ public class BallMovementController : MonoBehaviour
     {
         myRigidbody2D = GetComponent<Rigidbody2D>();
         myRigidbody2D.gravityScale = 0;
-        StartCoroutine(StartBall(true));
+        StartCoroutine(StartBall(PlayerType.Player1));
     }
-    public IEnumerator StartBall(bool startPlayer1=true)
+    public IEnumerator StartBall(PlayerType playerType)
     {
         hitCounter = 0;
+        SetBallPosition(playerType);
         yield return new WaitForSeconds(2);
-        if (startPlayer1)
+
+        if (playerType == PlayerType.Player1)
             BallMovement(new Vector2(-1,0));
-        else
+        else if (playerType == PlayerType.Player2)
             BallMovement(new Vector2(1,0));
         
     }
@@ -37,8 +39,20 @@ public class BallMovementController : MonoBehaviour
     {
         if(hitCounter * speedMultiplierByHit <= speedMultiplierMax)
         {
-            hitCounter++;
-            print("Increasing hit counter");
+            hitCounter++;            
         }
-    }    
+    }
+    private void SetBallPosition(PlayerType playerType)
+    {
+        myRigidbody2D.velocity = new Vector2(0, 0);
+        if(playerType == PlayerType.Player1)
+        {
+            gameObject.transform.localPosition = new Vector3(-100, 0, 0);
+
+        }
+        else if(playerType == PlayerType.Player2)
+        {
+            gameObject.transform.localPosition = new Vector3(100, 0, 0);
+        }
+    }
 }

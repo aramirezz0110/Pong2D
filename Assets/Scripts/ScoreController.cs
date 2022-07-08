@@ -14,6 +14,9 @@ public class ScoreController : MonoBehaviour
     [SerializeField] private TMP_Text scorePlayer1Text;
     [SerializeField] private TMP_Text scorePlayer2Text;
 
+    public RaquetController raquetController1;
+    public RaquetController raquetController2;
+
     private void Awake()
     {
         Instance = this;
@@ -22,11 +25,7 @@ public class ScoreController : MonoBehaviour
     {
         SetPlayer1Score(0);
         SetPlayer2Score(0);
-    }
-    private void Update()
-    {
-        
-    }
+    }    
     public void SetPointToPlayer(PlayerType playerType)
     {
         if(playerType == PlayerType.Player1)
@@ -44,10 +43,11 @@ public class ScoreController : MonoBehaviour
         if (scorePlayer1 <= maxScoreToWin)
         {            
             SetPlayer1Score(scorePlayer1);
+            RestoreRaquetsPositions();
             if (scorePlayer1 == maxScoreToWin)
-            {
-                print("Player 1 wins!");
+            {                
                 Time.timeScale = 0;
+                GameManager.Instance.ShowWinnerPlayer(PlayerType.Player1);
             }
         }        
     }
@@ -57,10 +57,11 @@ public class ScoreController : MonoBehaviour
         if (scorePlayer2 < maxScoreToWin)
         {            
             SetPlayer2Score(scorePlayer2);
+            RestoreRaquetsPositions();
             if (scorePlayer2 == maxScoreToWin)
             {
-                print("Player 2 wins!");
                 Time.timeScale = 0;
+                GameManager.Instance.ShowWinnerPlayer(PlayerType.Player2);
             }
         }
         
@@ -72,5 +73,10 @@ public class ScoreController : MonoBehaviour
     private void SetPlayer2Score(int score)
     {
         scorePlayer2Text.text = score.ToString();
+    }
+    private void RestoreRaquetsPositions()
+    {
+        raquetController1.RestoreStartPosition();
+        raquetController2.RestoreStartPosition();
     }
 }

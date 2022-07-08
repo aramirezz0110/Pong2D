@@ -9,10 +9,11 @@ public class RaquetController : MonoBehaviour
 
     private float inputValue;
     private Rigidbody2D myRigigbody2D;
-
+    private Vector3 startPosition;
     private void Start()
     {
         myRigigbody2D = GetComponent<Rigidbody2D>();
+        startPosition = gameObject.transform.position;
     }
     private void FixedUpdate()
     {
@@ -26,5 +27,9 @@ public class RaquetController : MonoBehaviour
             inputValue = Input.GetAxisRaw(PlayerAxis.Player2);
 
         myRigigbody2D.velocity = new Vector3(0, inputValue) * speedMovement;
+    }
+    public void RestoreStartPosition()
+    {
+        gameObject.transform.position = startPosition;
     }
 }
