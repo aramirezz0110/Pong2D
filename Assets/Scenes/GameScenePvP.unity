@@ -3181,6 +3181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29abe37a3a3a3944198c45d9a987f25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameMode: 0
   playersInfoPanel: {fileID: 933833854}
   gameFinishedPanel: {fileID: 1797537432}
   playerWinnerText: {fileID: 1599394441}
@@ -3218,7 +3219,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1797537433
 RectTransform:
   m_ObjectHideFlags: 0
